@@ -100,6 +100,8 @@ class NexTextStyles extends ThemeExtension<NexTextStyles> {
   final TextStyle bodyNormal;
   final TextStyle bodyThin;
 
+  final TextStyle buttonLabel;
+
   const NexTextStyles({
     required this.headingLarge,
     required this.headingMedium,
@@ -108,6 +110,7 @@ class NexTextStyles extends ThemeExtension<NexTextStyles> {
     required this.bodySemibold,
     required this.bodyNormal,
     required this.bodyThin,
+    required this.buttonLabel,
   });
 
   @override
@@ -119,6 +122,7 @@ class NexTextStyles extends ThemeExtension<NexTextStyles> {
     TextStyle? bodySemibold,
     TextStyle? bodyNormal,
     TextStyle? bodyThin,
+    TextStyle? buttonLabel,
   }) {
     return NexTextStyles(
       headingLarge: headingLarge ?? this.headingLarge,
@@ -128,6 +132,7 @@ class NexTextStyles extends ThemeExtension<NexTextStyles> {
       bodySemibold: bodySemibold ?? this.bodySemibold,
       bodyNormal: bodyNormal ?? this.bodyNormal,
       bodyThin: bodyThin ?? this.bodyThin,
+      buttonLabel: buttonLabel ?? this.buttonLabel,
     );
   }
 
@@ -143,6 +148,7 @@ class NexTextStyles extends ThemeExtension<NexTextStyles> {
       bodySemibold: TextStyle.lerp(bodySemibold, other.bodySemibold, t)!,
       bodyNormal: TextStyle.lerp(bodyNormal, other.bodyNormal, t)!,
       bodyThin: TextStyle.lerp(bodyThin, other.bodyThin, t)!,
+      buttonLabel: TextStyle.lerp(buttonLabel, other.buttonLabel, t)!,
     );
   }
 }

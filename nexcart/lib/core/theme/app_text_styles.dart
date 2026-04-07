@@ -10,6 +10,7 @@ final nexLightTextStyles = NexTextStyles(
   bodySemibold: NexTextConstants.bodySemibold.copyWith(color: nexLightColors.textPrimary),
   bodyNormal: NexTextConstants.bodyNormal.copyWith(color: nexLightColors.textPrimary),
   bodyThin: NexTextConstants.bodyThin.copyWith(color: nexLightColors.textPrimary),
+  buttonLabel: NexTextConstants.buttonLabel.copyWith(color: nexLightColors.onPrimary),
 );
 
 final nexDarkTextStyles = NexTextStyles(
@@ -20,6 +21,7 @@ final nexDarkTextStyles = NexTextStyles(
   bodySemibold: NexTextConstants.bodySemibold.copyWith(color: nexDarkColors.textPrimary),
   bodyNormal: NexTextConstants.bodyNormal.copyWith(color: nexDarkColors.textPrimary),
   bodyThin: NexTextConstants.bodyThin.copyWith(color: nexDarkColors.textPrimary),
+  buttonLabel: NexTextConstants.buttonLabel.copyWith(color: nexDarkColors.onPrimary),
 );
 
 class NexTextConstants {
@@ -32,4 +34,7 @@ class NexTextConstants {
   static const bodySemibold = TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
   static const bodyNormal = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
   static const bodyThin = TextStyle(fontSize: 16, fontWeight: FontWeight.w200);
+
+  // For buttons
+  static const buttonLabel = TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
 }

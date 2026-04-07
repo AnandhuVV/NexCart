@@ -25,3 +25,5 @@ Network
 
 # Typography used
 <img src="assets/fonts_typography.png" width="300" />
+
+Font family used : Poppins
