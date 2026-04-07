@@ -1,8 +1,8 @@
 import 'package:dart_either/src/dart_either.dart';
-import 'package:nexcart/authentication/data/data_sources/local/auth_local_data_source.dart';
-import 'package:nexcart/authentication/data/data_sources/remote/auth_remote_data_source.dart';
-import 'package:nexcart/authentication/domain/entities/user_entity.dart';
-import 'package:nexcart/authentication/domain/repository_contracts/auth_repository.dart';
+import 'package:nexcart/features/authentication/data/data_sources/local/auth_local_data_source.dart';
+import 'package:nexcart/features/authentication/data/data_sources/remote/auth_remote_data_source.dart';
+import 'package:nexcart/features/authentication/domain/entities/user_entity.dart';
+import 'package:nexcart/features/authentication/domain/repository_contracts/auth_repository.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl(this._remoteDataSource, this._localDataSource);

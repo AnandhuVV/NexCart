@@ -1,6 +1,6 @@
 import 'package:dart_either/dart_either.dart';
-import 'package:nexcart/authentication/data/data_sources/remote/auth_remote_data_source.dart';
-import 'package:nexcart/authentication/data/dto_models/signin_response_dto/signin_response_dto.dart';
+import 'package:nexcart/features/authentication/data/data_sources/remote/auth_remote_data_source.dart';
+import 'package:nexcart/features/authentication/data/dto_models/signin_response_dto/signin_response_dto.dart';
 import 'package:nexcart/core/network/api_client.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {

@@ -1,5 +1,5 @@
-import 'package:nexcart/authentication/data/providers/auth_providers.dart';
-import 'package:nexcart/authentication/domain/entities/user_entity.dart';
+import 'package:nexcart/features/authentication/data/providers/auth_providers.dart';
+import 'package:nexcart/features/authentication/domain/entities/user_entity.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_notifier.g.dart';

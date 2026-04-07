@@ -1,5 +1,7 @@
 import 'package:dart_either/dart_either.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:nexcart/core/network/errors.dart';
 
 enum HTTPMethod { get, post, put, delete, patch }
 
@@ -15,13 +17,15 @@ class ApiClient {
   }
 
   // MARK: Root function for API calls
-  Future<Either<Exception, Response>> request({
+  Future<Either<AppException, Response>> request({
     required String path,
     required HTTPMethod method,
     Map<String, dynamic>? queryParameters, // For GET URLs (?key=value)
-    dynamic data,                          // For POST/PUT JSON bodies
-    Map<String, dynamic>? headers,         // For specific request headers
+    dynamic data, // For POST/PUT JSON bodies
+    Map<String, dynamic>? headers, // For specific request headers
   }) async {
+    debugPrint('API Request - Path: $path, Method: ${method.name.toUpperCase()}');
+
     try {
       // Dio's request method allows us to specify the HTTP method dynamically, so we don't need separate functions for GET/POST/PUT etc.
       final response = await _dio.request(
@@ -34,15 +38,37 @@ class ApiClient {
         ),
       );
 
-      return Right(response); // Success case: Return the response wrapped in a Right
-
+      return Right(
+          response); // Success case: Return the response wrapped in a Right
     } on DioException catch (e) {
       // Dio specifically caught a network error (Timeout, 404, 401, no internet)
-      return Left(Exception(e.message ?? "A network error occurred"));
-      
+      return Left(_mapDioException(e));
     } catch (e) {
       // Caught an unexpected Dart error (like a JSON parsing failure)
-      return Left(Exception("An unexpected error occurred: $e"));
+      return Left(AppException.server);
     }
   }
+}
+
+AppException _mapDioException(DioException e) {
+  switch (e.type) {
+    case DioExceptionType.connectionTimeout:
+    case DioExceptionType.receiveTimeout:
+      return AppException.timeout;
+    case DioExceptionType.connectionError:
+      return AppException.network;
+    case DioExceptionType.badResponse:
+      return _mapStatusCode(e.response?.statusCode);
+    default:
+      return AppException.unknown;
+  }
+}
+
+AppException _mapStatusCode(int? statusCode) {
+  return switch (statusCode) {
+    401 => AppException.unauthorised,
+    429 => AppException.rateLimit,
+    final s when (s ?? 0) >= 500 => AppException.server,
+    _ => AppException.unknown,
+  };
 }

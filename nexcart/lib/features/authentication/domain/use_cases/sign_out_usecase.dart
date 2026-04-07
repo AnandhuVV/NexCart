@@ -1,4 +1,4 @@
-import 'package:nexcart/authentication/domain/repository_contracts/auth_repository.dart';
+import 'package:nexcart/features/authentication/domain/repository_contracts/auth_repository.dart';
 
 class SignOutUseCase {
   final AuthRepository repository;

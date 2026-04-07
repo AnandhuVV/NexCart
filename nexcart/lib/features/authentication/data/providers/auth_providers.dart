@@ -1,14 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:nexcart/core/config/app_config.dart';
+import 'package:nexcart/core/network/interceptors/auth_interceptor.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:nexcart/authentication/data/data_sources/local/auth_local_data_source.dart';
-import 'package:nexcart/authentication/data/data_sources/local/auth_local_data_source_impl.dart';
-import 'package:nexcart/authentication/data/data_sources/remote/auth_remote_data_source.dart';
-import 'package:nexcart/authentication/data/data_sources/remote/auth_remote_data_source_impl.dart';
-import 'package:nexcart/authentication/data/repositories/auth_repository_impl.dart';
-import 'package:nexcart/authentication/domain/repository_contracts/auth_repository.dart';
-import 'package:nexcart/authentication/domain/use_cases/sign_in_usecase.dart';
-import 'package:nexcart/authentication/domain/use_cases/sign_out_usecase.dart';
+import 'package:nexcart/features/authentication/data/data_sources/local/auth_local_data_source.dart';
+import 'package:nexcart/features/authentication/data/data_sources/local/auth_local_data_source_impl.dart';
+import 'package:nexcart/features/authentication/data/data_sources/remote/auth_remote_data_source.dart';
+import 'package:nexcart/features/authentication/data/data_sources/remote/auth_remote_data_source_impl.dart';
+import 'package:nexcart/features/authentication/data/repositories/auth_repository_impl.dart';
+import 'package:nexcart/features/authentication/domain/repository_contracts/auth_repository.dart';
+import 'package:nexcart/features/authentication/domain/use_cases/sign_in_usecase.dart';
+import 'package:nexcart/features/authentication/domain/use_cases/sign_out_usecase.dart';
 import 'package:nexcart/core/network/api_client.dart';
 
 part 'auth_providers.g.dart';
@@ -23,8 +25,22 @@ FlutterSecureStorage secureStorage(Ref ref) {
 
 @Riverpod(keepAlive: true)
 ApiClient apiClient(Ref ref) {
-  // Injecting Dio directly into our ApiClient
-  return ApiClient(Dio());
+  final storage = ref.watch(secureStorageProvider);
+
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: AppConfig.baseUrl,
+      connectTimeout: AppConfig.connectTimeout,
+      receiveTimeout: AppConfig.receiveTimeout,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    ),
+  );
+
+  dio.interceptors.add(AuthInterceptor(storage));
+  
+  return ApiClient(dio);
 }
 
 // MARK: Data Sources
