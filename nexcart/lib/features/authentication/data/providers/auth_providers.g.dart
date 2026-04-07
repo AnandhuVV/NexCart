@@ -9,107 +9,27 @@ part of 'auth_providers.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(secureStorage)
-final secureStorageProvider = SecureStorageProvider._();
-
-final class SecureStorageProvider extends $FunctionalProvider<
-    FlutterSecureStorage,
-    FlutterSecureStorage,
-    FlutterSecureStorage> with $Provider<FlutterSecureStorage> {
-  SecureStorageProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'secureStorageProvider',
-          isAutoDispose: false,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
-
-  @override
-  String debugGetCreateSourceHash() => _$secureStorageHash();
-
-  @$internal
-  @override
-  $ProviderElement<FlutterSecureStorage> $createElement(
-          $ProviderPointer pointer) =>
-      $ProviderElement(pointer);
-
-  @override
-  FlutterSecureStorage create(Ref ref) {
-    return secureStorage(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(FlutterSecureStorage value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<FlutterSecureStorage>(value),
-    );
-  }
-}
-
-String _$secureStorageHash() => r'a4f75721472cf77465bf47f759c90de5ca30856e';
-
-@ProviderFor(apiClient)
-final apiClientProvider = ApiClientProvider._();
-
-final class ApiClientProvider
-    extends $FunctionalProvider<ApiClient, ApiClient, ApiClient>
-    with $Provider<ApiClient> {
-  ApiClientProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'apiClientProvider',
-          isAutoDispose: false,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
-
-  @override
-  String debugGetCreateSourceHash() => _$apiClientHash();
-
-  @$internal
-  @override
-  $ProviderElement<ApiClient> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
-
-  @override
-  ApiClient create(Ref ref) {
-    return apiClient(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(ApiClient value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<ApiClient>(value),
-    );
-  }
-}
-
-String _$apiClientHash() => r'e0b25dc409e3c3ee51d52624ec29e4987549d700';
-
 @ProviderFor(authLocalDataSource)
 final authLocalDataSourceProvider = AuthLocalDataSourceProvider._();
 
-final class AuthLocalDataSourceProvider extends $FunctionalProvider<
-    AuthLocalDataSource,
-    AuthLocalDataSource,
-    AuthLocalDataSource> with $Provider<AuthLocalDataSource> {
+final class AuthLocalDataSourceProvider
+    extends
+        $FunctionalProvider<
+          AuthLocalDataSource,
+          AuthLocalDataSource,
+          AuthLocalDataSource
+        >
+    with $Provider<AuthLocalDataSource> {
   AuthLocalDataSourceProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'authLocalDataSourceProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'authLocalDataSourceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$authLocalDataSourceHash();
@@ -117,8 +37,8 @@ final class AuthLocalDataSourceProvider extends $FunctionalProvider<
   @$internal
   @override
   $ProviderElement<AuthLocalDataSource> $createElement(
-          $ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   AuthLocalDataSource create(Ref ref) {
@@ -140,20 +60,24 @@ String _$authLocalDataSourceHash() =>
 @ProviderFor(authRemoteDataSource)
 final authRemoteDataSourceProvider = AuthRemoteDataSourceProvider._();
 
-final class AuthRemoteDataSourceProvider extends $FunctionalProvider<
-    AuthRemoteDataSource,
-    AuthRemoteDataSource,
-    AuthRemoteDataSource> with $Provider<AuthRemoteDataSource> {
+final class AuthRemoteDataSourceProvider
+    extends
+        $FunctionalProvider<
+          AuthRemoteDataSource,
+          AuthRemoteDataSource,
+          AuthRemoteDataSource
+        >
+    with $Provider<AuthRemoteDataSource> {
   AuthRemoteDataSourceProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'authRemoteDataSourceProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'authRemoteDataSourceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$authRemoteDataSourceHash();
@@ -161,8 +85,8 @@ final class AuthRemoteDataSourceProvider extends $FunctionalProvider<
   @$internal
   @override
   $ProviderElement<AuthRemoteDataSource> $createElement(
-          $ProviderPointer pointer) =>
-      $ProviderElement(pointer);
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
 
   @override
   AuthRemoteDataSource create(Ref ref) {
@@ -188,15 +112,15 @@ final class AuthRepositoryProvider
     extends $FunctionalProvider<AuthRepository, AuthRepository, AuthRepository>
     with $Provider<AuthRepository> {
   AuthRepositoryProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'authRepositoryProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'authRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$authRepositoryHash();
@@ -229,15 +153,15 @@ final class SignInUseCaseProvider
     extends $FunctionalProvider<SignInUseCase, SignInUseCase, SignInUseCase>
     with $Provider<SignInUseCase> {
   SignInUseCaseProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'signInUseCaseProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'signInUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$signInUseCaseHash();
@@ -270,15 +194,15 @@ final class SignOutUseCaseProvider
     extends $FunctionalProvider<SignOutUseCase, SignOutUseCase, SignOutUseCase>
     with $Provider<SignOutUseCase> {
   SignOutUseCaseProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'signOutUseCaseProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'signOutUseCaseProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$signOutUseCaseHash();

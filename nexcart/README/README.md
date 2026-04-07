@@ -27,3 +27,6 @@ Network
 <img src="assets/fonts_typography.png" width="300" />
 
 Font family used : Poppins
+
+# Usage of Either
+    dart_either is used across all layers including domain. While purist Clean Architecture avoids external dependencies in domain, dart_either is a pure Dart utility with no framework coupling, making this an acceptable pragmatic tradeoff.

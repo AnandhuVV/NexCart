@@ -4,7 +4,7 @@ part 'signin_response_dto.freezed.dart';
 part 'signin_response_dto.g.dart';
 
 @freezed
-abstract class SignInResponseDTO with _$SignInResponseDTO {
+sealed class SignInResponseDTO with _$SignInResponseDTO {
   const SignInResponseDTO._();
 
   const factory SignInResponseDTO({
