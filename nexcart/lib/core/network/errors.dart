@@ -1,6 +1,6 @@
 enum AppException implements Exception {
   network('No internet connection. Please check your network.'),
-  unauthorised('Invalid username or password.'),
+  unauthorised('User not authorized for this action'),
   rateLimit('Too many attempts. Please wait a moment.'),
   server('Something went wrong. Please try again later.'),
   timeout('Request timed out. Please try again.'),

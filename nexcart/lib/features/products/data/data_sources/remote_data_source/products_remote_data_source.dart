@@ -9,13 +9,12 @@ abstract class ProductsRemoteDataSource {
     int skip = 0,
     String? sortBy,
     String? order,
+    String? categorySlug,
   });
 
   Future<Either<Exception, ProductEntity>> getProductById(int id);
 
   Future<Either<Exception, PaginatedProductsEntity>> searchProducts(String query);
-
-  Future<Either<Exception, PaginatedProductsEntity>> getProductsByCategory(String slug);
 
   Future<Either<Exception, List<CategoryEntity>>> getCategories();
 }

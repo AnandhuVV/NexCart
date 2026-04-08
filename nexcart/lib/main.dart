@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nexcart/features/authentication/presentation/widgets/login.dart';
+import 'package:nexcart/core/router/app_router.dart';
 import 'package:nexcart/core/theme/app_theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -13,11 +15,11 @@ class MyApp extends StatelessWidget {
   // Root Widget
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       themeMode: ThemeMode.system,
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const LoginWidget(),
+      routerConfig: appRouter,
     );
   }
 }

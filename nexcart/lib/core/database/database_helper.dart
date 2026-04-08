@@ -15,29 +15,42 @@ class DatabaseHelper {
 
   Future<Database> _initDatabase() async {
     final path = join(await getDatabasesPath(), 'nexcart.db');
-    return openDatabase(
-      path,
-      version: 1,
-      onCreate: _onCreate,
-    );
+    return openDatabase(path, version: 1, onCreate: _onCreate);
   }
 
   Future<void> _onCreate(Database db, int version) async {
     await db.execute('''
-      CREATE TABLE products (
-        id INTEGER PRIMARY KEY,
-        title TEXT NOT NULL,
-        description TEXT NOT NULL,
-        category TEXT NOT NULL,
-        price REAL NOT NULL,
-        discount_percentage REAL NOT NULL,
-        rating REAL NOT NULL,
-        stock INTEGER NOT NULL,
-        thumbnail TEXT NOT NULL,
-        images TEXT NOT NULL,
-        availability_status TEXT NOT NULL,
-        brand TEXT
-      )
-    ''');
+    CREATE TABLE products (
+      id INTEGER PRIMARY KEY,
+      title TEXT NOT NULL,
+      description TEXT NOT NULL,
+      category TEXT NOT NULL,
+      price REAL NOT NULL,
+      discount_percentage REAL NOT NULL,
+      rating REAL NOT NULL,
+      stock INTEGER NOT NULL,
+      thumbnail TEXT NOT NULL,
+      images TEXT NOT NULL,
+      availability_status TEXT NOT NULL,
+      brand TEXT
+    )
+  ''');
+
+    await db.execute('''
+    CREATE TABLE cart (
+      product_id INTEGER PRIMARY KEY,
+      quantity INTEGER NOT NULL,
+      FOREIGN KEY (product_id) REFERENCES products(id)
+    )
+  ''');
+  }
+
+  Future<void> clearAllData() async {
+    final db = await database;
+
+    await db.transaction((txn) async {
+      await txn.delete('cart');
+      await txn.delete('products');
+    });
   }
 }

@@ -19,9 +19,12 @@ class ProductsRemoteDataSourceImpl extends ProductsRemoteDataSource {
     int skip = 0,
     String? sortBy,
     String? order,
+    String? categorySlug,
   }) async {
     final response = await _apiClient.request(
-      path: '/products',
+      path: categorySlug != null
+          ? '/products/category/$categorySlug'
+          : '/products',
       method: HTTPMethod.get,
       queryParameters: {
         'limit': limit,
@@ -63,19 +66,20 @@ class ProductsRemoteDataSourceImpl extends ProductsRemoteDataSource {
     );
   }
 
-  @override
-  Future<Either<Exception, PaginatedProductsEntity>> getProductsByCategory(
-    String slug,
-  ) async {
-    final response = await _apiClient.request(
-      path: '/products/category/$slug',
-      method: HTTPMethod.get,
-    );
+  //TODO: Remove
+  // @override
+  // Future<Either<Exception, PaginatedProductsEntity>> getProductsByCategory(
+  //   String slug,
+  // ) async {
+  //   final response = await _apiClient.request(
+  //     path: '/products/category/$slug',
+  //     method: HTTPMethod.get,
+  //   );
 
-    return response.map(
-      (response) => ProductsResponseDTO.fromJson(response.data).toEntity(),
-    );
-  }
+  //   return response.map(
+  //     (response) => ProductsResponseDTO.fromJson(response.data).toEntity(),
+  //   );
+  // }
 
   @override
   Future<Either<Exception, List<CategoryEntity>>> getCategories() async {

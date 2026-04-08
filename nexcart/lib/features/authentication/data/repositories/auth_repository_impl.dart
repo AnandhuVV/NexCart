@@ -11,7 +11,10 @@ class AuthRepositoryImpl extends AuthRepository {
   final AuthLocalDataSource _localDataSource;
 
   @override
-  Future<Either<Exception, UserEntity>> signIn(String username, String password) async {
+  Future<Either<Exception, UserEntity>> signIn(
+    String username,
+    String password,
+  ) async {
     final remoteResult = await _remoteDataSource.signIn(username, password);
 
     return await remoteResult.fold(
@@ -22,18 +25,27 @@ class AuthRepositoryImpl extends AuthRepository {
           refreshToken: response.refreshToken,
         );
 
-        return Right(UserEntity(
-          id: response.id,
-          fullName: response.fullName,
-          email: response.email,
-          gender: response.gender,
-          image: response.image,
-        ));
-      });
+        return Right(
+          UserEntity(
+            id: response.id,
+            fullName: response.fullName,
+            email: response.email,
+            gender: response.gender,
+            image: response.image,
+          ),
+        );
+      },
+    );
   }
 
   @override
   Future<void> signOut() async {
     await _localDataSource.clearTokens();
+  }
+
+  @override
+  Future<String?> getCachedToken() async {
+    final token = await _localDataSource.getAccessToken();
+    return token;
   }
 }

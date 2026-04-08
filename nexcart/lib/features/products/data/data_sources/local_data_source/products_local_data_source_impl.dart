@@ -38,6 +38,20 @@ class ProductsLocalDataSourceImpl extends ProductsLocalDataSource {
     return maps.map((map) => _fromMap(map)).toList();
   }
 
+  @override
+  Future<ProductEntity?> getCachedProductById(int id) async {
+    final db = await _databaseHelper.database;
+    final maps = await db.query(
+      'products',
+      where: 'id = ?',
+      whereArgs: [id],
+      limit: 1,
+    );
+
+    if (maps.isEmpty) return null;
+    return _fromMap(maps.first);
+  }
+
   Map<String, dynamic> _toMap(ProductEntity product) {
     return {
       'id': product.id,

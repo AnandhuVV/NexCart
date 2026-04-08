@@ -4,12 +4,14 @@ import 'package:nexcart/core/theme/theme_extension.dart';
 const nexLightColors = NexColors(
   // Actions
   primaryAction: Color(0xFF0C83DC),    // Strong brand blue for high-visibility actions
-  secondaryAction: Colors.white,      // Clean white for secondary or ghost buttons
+  secondaryAction: Colors.white,       // Clean white for secondary or ghost buttons
 
   // Backgrounds
   background: Color(0xFFF2F6FA),       // Very soft blue-tinted grey to reduce "stark white" glare
   surface: Colors.white,               // Pure white to make cards and containers "pop"
-  surfaceTint: Color(0xFFECECEE),   // Subtle grey for dividers or inactive input backgrounds
+  surfaceTint: Color(0xFFECECEE),      // Subtle grey for dividers or inactive input backgrounds
+  shimmerBase: Color(0xFFE0E0E0),      // Light grey for shimmer base
+  shimmerHighlight: Color(0xFFF5F5F5), // Slightly lighter
 
   // Text
   textPrimary: Color(0xFF151829),      // Deep navy-black for maximum readability
@@ -24,13 +26,15 @@ const nexLightColors = NexColors(
 
 const nexDarkColors = NexColors(
   // Actions
-  primaryAction: Color(0xFF2FA4D9),    // Slightly brighter/more saturated blue to pop on dark
+  primaryAction: Color(0xFF1F7AA5),    // Slightly brighter/more saturated blue to pop on dark
   secondaryAction: Color.fromARGB(255, 78, 91, 114),  // Darker surface for subtle buttons
 
   // Backgrounds
   background: Color(0xFF0F111A),       // Deep "Midnight" blue-black
   surface: Color(0xFF1B1E2B),          // Lighter than background to create elevation
   surfaceTint: Color(0xFF242735),      // Used for dividers or inactive states
+  shimmerBase: Color(0xFF2A2A2A),      // Dark grey for shimmer base
+  shimmerHighlight: Color(0xFF3A3A3A), // Slightly lighter for shimmer highlight
 
   // Text
   textPrimary: Color(0xFFECEFF4),      // Off-white for high contrast without "vibration"

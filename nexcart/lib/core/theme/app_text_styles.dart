@@ -28,12 +28,12 @@ class NexTextConstants {
   NexTextConstants._();
 
   static const headingLarge = TextStyle(fontSize: 32, fontWeight: FontWeight.w600);
-  static const headingMedium = TextStyle(fontSize: 28, fontWeight: FontWeight.w600);
-  static const bodyLarge = TextStyle(fontSize: 24, fontWeight: FontWeight.w600);
-  static const bodyMedium = TextStyle(fontSize: 20, fontWeight: FontWeight.w400);
-  static const bodySemibold = TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
-  static const bodyNormal = TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
-  static const bodyThin = TextStyle(fontSize: 16, fontWeight: FontWeight.w200);
+  static const headingMedium = TextStyle(fontSize: 24, fontWeight: FontWeight.w600);
+  static const bodyLarge = TextStyle(fontSize: 22, fontWeight: FontWeight.w600);
+  static const bodyMedium = TextStyle(fontSize: 18, fontWeight: FontWeight.w400);
+  static const bodySemibold = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
+  static const bodyNormal = TextStyle(fontSize: 16, fontWeight: FontWeight.w300);
+  static const bodyThin = TextStyle(fontSize: 14, fontWeight: FontWeight.w300);
 
   // For buttons
   static const buttonLabel = TextStyle(fontSize: 16, fontWeight: FontWeight.w600);

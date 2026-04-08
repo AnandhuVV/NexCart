@@ -9,6 +9,8 @@ class NexColors extends ThemeExtension<NexColors> {
   // Backgrounds
   final Color background; // app background (screen)
   final Color surface; // cards, containers
+  final Color shimmerBase;
+  final Color shimmerHighlight;
 
   // Text
   final Color textPrimary;
@@ -25,6 +27,8 @@ class NexColors extends ThemeExtension<NexColors> {
   final Color error;
 
   const NexColors({
+    required this.shimmerBase,
+    required this.shimmerHighlight,
     required this.primaryAction,
     required this.secondaryAction,
     required this.background,
@@ -40,6 +44,8 @@ class NexColors extends ThemeExtension<NexColors> {
 
   @override
   NexColors copyWith({
+    Color? shimmerBase,
+    Color? shimmerHighlight,
     Color? primaryAction,
     Color? secondaryAction,
     Color? background,
@@ -55,6 +61,8 @@ class NexColors extends ThemeExtension<NexColors> {
     Color? error,
   }) {
     return NexColors(
+      shimmerBase: shimmerBase ?? this.shimmerBase,
+      shimmerHighlight: shimmerHighlight ?? this.shimmerHighlight,
       primaryAction: primaryAction ?? this.primaryAction,
       secondaryAction: secondaryAction ?? this.secondaryAction,
       background: background ?? this.background,
@@ -76,6 +84,8 @@ class NexColors extends ThemeExtension<NexColors> {
     }
 
     return NexColors(
+      shimmerBase: Color.lerp(shimmerBase, other.shimmerBase, t)!,
+      shimmerHighlight: Color.lerp(shimmerHighlight, other.shimmerHighlight, t)!,
       primaryAction: Color.lerp(primaryAction, other.primaryAction, t)!,
       secondaryAction: Color.lerp(secondaryAction, other.secondaryAction, t)!,
       background: Color.lerp(background, other.background, t)!,

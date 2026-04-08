@@ -4,19 +4,23 @@ import 'package:nexcart/core/extensions/context_extension.dart';
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
+    this.width = double.infinity,
+    this.height = 62,
     required this.title,
     required this.onPressed,
     required this.isLoading,
   });
 
   final String title;
+  final double width;
+  final double height;
   final VoidCallback? onPressed;
   final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: width,
       height: 62,
       decoration: BoxDecoration(
         color: context.colors.primaryAction,

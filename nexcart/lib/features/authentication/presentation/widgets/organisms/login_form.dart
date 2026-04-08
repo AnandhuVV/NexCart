@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nexcart/features/authentication/presentation/view_models/auth_notifier.dart';
+import 'package:go_router/go_router.dart';
+import 'package:nexcart/features/authentication/presentation/notifiers/auth_notifier.dart';
 import 'package:nexcart/core/extensions/context_extension.dart';
 import 'package:nexcart/core/ui/atoms/primary_button.dart';
 import 'package:nexcart/core/ui/atoms/text_field.dart';
@@ -42,12 +43,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
       next.whenOrNull(
         data: (data) {
           if (data != null) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Logged in successfully!"),
-                backgroundColor: context.colors.success,
-              ),
-            );
+             context.go('/home');
           }
         },
         error: (error, _) {
