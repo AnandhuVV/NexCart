@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:nexcart/core/extensions/context_extension.dart';
 import 'package:nexcart/core/ui/atoms/nex_shimmer.dart';
 import 'package:nexcart/core/ui/molecules/error_state.dart';
-import 'package:nexcart/features/authentication/di/auth_providers.dart';
 import 'package:nexcart/features/profile/presentation/notifiers/profile_screen_notifier.dart';
 
 class ProfileScreen extends ConsumerWidget {

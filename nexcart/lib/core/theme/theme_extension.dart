@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//TODO: Remove unnecessary props
 class NexColors extends ThemeExtension<NexColors> {
   // Actions
   final Color primaryAction; // main buttons background

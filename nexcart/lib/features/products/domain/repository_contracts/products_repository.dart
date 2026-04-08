@@ -16,8 +16,5 @@ abstract class ProductsRepository {
 
   Future<Either<Exception, PaginatedProductsEntity>> searchProducts(String query);
 
-  //TODO: Remove
-  //Future<Either<Exception, PaginatedProductsEntity>> getProductsByCategory(String slug);
-
   Future<Either<Exception, List<CategoryEntity>>> getCategories();
 }

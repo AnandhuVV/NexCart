@@ -66,21 +66,6 @@ class ProductsRemoteDataSourceImpl extends ProductsRemoteDataSource {
     );
   }
 
-  //TODO: Remove
-  // @override
-  // Future<Either<Exception, PaginatedProductsEntity>> getProductsByCategory(
-  //   String slug,
-  // ) async {
-  //   final response = await _apiClient.request(
-  //     path: '/products/category/$slug',
-  //     method: HTTPMethod.get,
-  //   );
-
-  //   return response.map(
-  //     (response) => ProductsResponseDTO.fromJson(response.data).toEntity(),
-  //   );
-  // }
-
   @override
   Future<Either<Exception, List<CategoryEntity>>> getCategories() async {
     final response = await _apiClient.request(
