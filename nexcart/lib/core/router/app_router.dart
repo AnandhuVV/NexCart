@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexcart/core/extensions/context_extension.dart';
+import 'package:nexcart/core/router/app_shell.dart';
 import 'package:nexcart/features/authentication/presentation/widgets/login_screen.dart';
 import 'package:nexcart/features/cart/presentation/notifiers/cart_notifier.dart';
 import 'package:nexcart/features/cart/presentation/widgets/cart_screen.dart';
@@ -23,70 +24,7 @@ final GoRouter appRouter = GoRouter(
         if (location.startsWith('/cart')) selectedIndex = 1;
         if (location.startsWith('/profile')) selectedIndex = 2;
 
-        return Scaffold(
-          body: child,
-          bottomNavigationBar: Consumer(
-            builder: (context, ref, _) {
-              final cartState = ref.watch(cartProvider);
-              final cartCount = cartState.value?.length ?? 0;
-
-              return NavigationBar(
-                backgroundColor: context.colors.surface,
-                indicatorColor: context.colors.primaryAction,
-                selectedIndex: selectedIndex,
-                onDestinationSelected: (index) {
-                  switch (index) {
-                    case 0:
-                      context.go('/home');
-                      break;
-                    case 1:
-                      context.go('/cart');
-                      break;
-                    case 2:
-                      context.go('/profile');
-                      break;
-                  }
-                },
-                destinations: [
-                  NavigationDestination(
-                    icon: const Icon(Icons.home_outlined),
-                    selectedIcon: Icon(
-                      Icons.home,
-                      color: context.colors.onPrimary,
-                    ),
-                    label: 'Home',
-                  ),
-
-                  NavigationDestination(
-                    icon: Badge(
-                      isLabelVisible: cartCount > 0,
-                      label: Text('$cartCount'),
-                      child: const Icon(Icons.shopping_cart_outlined),
-                    ),
-                    selectedIcon: Badge(
-                      isLabelVisible: cartCount > 0,
-                      label: Text('$cartCount'),
-                      child: Icon(
-                        Icons.shopping_cart,
-                        color: context.colors.onPrimary,
-                      ),
-                    ),
-                    label: 'Cart',
-                  ),
-
-                  NavigationDestination(
-                    icon: const Icon(Icons.person_outline),
-                    selectedIcon: Icon(
-                      Icons.person,
-                      color: context.colors.onPrimary,
-                    ),
-                    label: 'Profile',
-                  ),
-                ],
-              );
-            },
-          ),
-        );
+        return AppShell(selectedIndex: selectedIndex, child: child);
       },
       routes: [
         GoRoute(

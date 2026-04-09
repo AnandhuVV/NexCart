@@ -34,7 +34,7 @@ final class ProfileScreenNotifierProvider
 }
 
 String _$profileScreenNotifierHash() =>
-    r'fb744c1947bc2747e9c75184188c7937f390ba07';
+    r'84b44ce5c569060d8c6636867ed582b56309c1ad';
 
 abstract class _$ProfileScreenNotifier
     extends $AsyncNotifier<UserDetailsEntity> {

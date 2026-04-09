@@ -15,7 +15,7 @@ class ApiClient {
     _dio.options.receiveTimeout = const Duration(seconds: 10);
     _dio.options.responseType = ResponseType.json;
 
-    _dio.interceptors.add(LogInterceptor());
+    //_dio.interceptors.add(LogInterceptor());
   }
 
   // MARK: Root function for API calls

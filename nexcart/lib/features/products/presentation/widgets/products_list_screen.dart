@@ -48,7 +48,9 @@ class ProductsListScreen extends ConsumerWidget {
           data: (paginated) => paginated.products.isEmpty
               ? SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  child: const EmptyState(message: "No products found"),
+                  child: SizedBox(
+                    height: 320,
+                    child: const EmptyState(message: "No products found")),
                 )
               : _buildProductGrid(context, ref, paginated),
         ),

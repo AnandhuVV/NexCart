@@ -151,7 +151,7 @@ final class ProductsRepositoryProvider
 }
 
 String _$productsRepositoryHash() =>
-    r'b426f43dcb1196029821d251cc12c08dbd86db1b';
+    r'5138a628bf00b24f730bdd9b0eb210d90dede72f';
 
 @ProviderFor(getProductsUsecase)
 final getProductsUsecaseProvider = GetProductsUsecaseProvider._();

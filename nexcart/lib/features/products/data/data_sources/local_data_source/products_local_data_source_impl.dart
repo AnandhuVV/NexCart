@@ -31,11 +31,16 @@ class ProductsLocalDataSourceImpl extends ProductsLocalDataSource {
   }
 
   @override
-  Future<List<ProductEntity>> getCachedProducts() async {
+  Future<List<ProductEntity>> getCachedProducts(String? categorySlug) async {
     final db = await _databaseHelper.database;
-    final maps = await db.query('products');
 
-    return maps.map((map) => _fromMap(map)).toList();
+    final maps = await db.query(
+      'products',
+      where: categorySlug != null ? 'category = ?' : null,
+      whereArgs: categorySlug != null ? [categorySlug] : null,
+    );
+
+    return maps.map(_fromMap).toList();
   }
 
   @override

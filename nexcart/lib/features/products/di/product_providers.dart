@@ -1,3 +1,4 @@
+import 'package:nexcart/core/providers/connectivity/connectivity_guard_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:nexcart/core/providers/database/database_provider.dart';
 import 'package:nexcart/core/providers/remote/api_client_provider.dart';
@@ -29,6 +30,7 @@ ProductsRepository productsRepository(Ref ref) {
   return ProductsRepositoryImpl(
     ref.watch(productsRemoteDataSourceProvider),
     ref.watch(productsLocalDataSourceProvider),
+    ref.watch(connectivityGuardProvider),
   );
 }
 
