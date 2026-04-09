@@ -2,7 +2,7 @@
 
 NexCart is a Flutter e-commerce application built for a machine test. The project follows a feature-first Clean Architecture approach, uses Riverpod 3 for state management and dependency injection, applies Atomic Design in the presentation layer, and uses `sqflite` for local persistence.
 
-The original brief referenced Fake Store API. This implementation uses DummyJSON because the evaluator explicitly asked for it after the Fake Store endpoints were failing during the test period.
+The original brief referenced Fake Store API. This implementation uses DummyJSON because the Fake Store endpoints were failing during the test period.
 
 API base URL:
 `https://dummyjson.com/`
