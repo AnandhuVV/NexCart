@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexcart/core/extensions/context_extension.dart';
+import 'package:nexcart/core/providers/connectivity/connectivity_guard_provider.dart';
 import 'package:nexcart/core/ui/atoms/product_card.dart';
 import 'package:nexcart/core/ui/atoms/nex_shimmer.dart';
 import 'package:nexcart/core/ui/atoms/see_all_button.dart';
@@ -18,6 +19,18 @@ class HomeScreenProductsSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productsState = ref.watch(productsProvider(selectedCategory.slug, 6));
+
+    ref.listen<AsyncValue<bool>>(connectivityStatusProvider, (previous, next) {
+      final wasOffline = previous?.value == false;
+      final isOnline = next.value == true;
+
+      // If transitioned from Offline -> Online
+      if (wasOffline && isOnline) {
+        if (productsState.hasError || (productsState.value?.products.isEmpty ?? false)) {
+           ref.invalidate(productsProvider(selectedCategory.slug, 6));
+        }
+      }
+    });
 
     return Column(
       spacing: 12,
