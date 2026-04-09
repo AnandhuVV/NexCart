@@ -87,24 +87,35 @@ The app is structured around a remote-first data flow with local persistence sup
 
 Main packages used in this project:
 
+Runtime dependencies:
+
 - `flutter_riverpod`
 - `riverpod_annotation`
-- `riverpod_generator`
 - `go_router`
 - `dio`
 - `flutter_secure_storage`
 - `sqflite`
 - `path`
-- `freezed_annotation`
-- `freezed`
-- `json_annotation`
-- `json_serializable`
 - `dart_either`
+- `freezed_annotation`
+- `json_annotation`
 - `cached_network_image`
 - `shimmer`
+- `connectivity_plus`
+- `flutter_localizations`
+- `intl`
+- `cupertino_icons`
+
+Development dependencies:
+
 - `build_runner`
+- `riverpod_generator`
+- `freezed`
+- `json_serializable`
 - `custom_lint`
 - `riverpod_lint`
+- `flutter_lints`
+- `flutter_launcher_icons`
 
 ## Setup Instructions
 
