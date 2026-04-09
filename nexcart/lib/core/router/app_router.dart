@@ -5,6 +5,7 @@ import 'package:nexcart/features/cart/presentation/widgets/cart_screen.dart';
 import 'package:nexcart/features/products/domain/entities/category_entity.dart';
 import 'package:nexcart/features/products/presentation/widgets/home_screen.dart';
 import 'package:nexcart/features/products/presentation/widgets/product_details_screen.dart';
+import 'package:nexcart/features/products/presentation/widgets/product_search_screen.dart';
 import 'package:nexcart/features/products/presentation/widgets/products_list_screen.dart';
 import 'package:nexcart/features/profile/presentation/widgets/profile_screen.dart';
 import 'package:nexcart/features/splash/presentation/widgets/splash_screen.dart';
@@ -75,6 +76,12 @@ final GoRouter appRouter = GoRouter(
           child: ProductDetailScreen(productId: id),
         );
       },
+    ),
+
+    GoRoute(
+      path: '/search',
+      pageBuilder: (_, state) =>
+          NoTransitionPage(key: state.pageKey, child: const SearchScreen()),
     ),
   ],
 );

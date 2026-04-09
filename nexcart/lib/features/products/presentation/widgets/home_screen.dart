@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nexcart/core/extensions/context_extension.dart';
 import 'package:nexcart/core/ui/atoms/offline_banner.dart';
 import 'package:nexcart/features/products/domain/entities/category_entity.dart';
@@ -44,11 +45,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            onPressed: () => context.go('/search'),
+            icon: Icon(Icons.search, color: context.colors.onPrimary),
+          ),
+        ],
       ),
       body: Column(
         children: [
           const OfflineBanner(),
-          
+
           Expanded(
             child: SingleChildScrollView(
               child: SafeArea(
@@ -63,9 +70,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         });
                       },
                     ),
-            
+
                     if (selectedCategory != null)
-                      HomeScreenProductsSection(selectedCategory: selectedCategory!),
+                      HomeScreenProductsSection(
+                        selectedCategory: selectedCategory!,
+                      ),
                   ],
                 ),
               ),

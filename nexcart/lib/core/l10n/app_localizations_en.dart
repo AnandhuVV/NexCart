@@ -102,6 +102,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get products => 'Products';
 
   @override
+  String get searchNexCart => 'Search NexCart...';
+
+  @override
+  String get whatAreYouLookingForToday => 'What are you looking for today?';
+
+  @override
   String get noProductsFound => 'No products found';
 
   @override

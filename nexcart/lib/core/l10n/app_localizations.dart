@@ -272,6 +272,18 @@ abstract class AppLocalizations {
   /// **'Products'**
   String get products;
 
+  /// No description provided for @searchNexCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Search NexCart...'**
+  String get searchNexCart;
+
+  /// No description provided for @whatAreYouLookingForToday.
+  ///
+  /// In en, this message translates to:
+  /// **'What are you looking for today?'**
+  String get whatAreYouLookingForToday;
+
   /// No description provided for @noProductsFound.
   ///
   /// In en, this message translates to:

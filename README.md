@@ -183,7 +183,7 @@ flutter test
 - Category selection
 - Product detail screen
 - Cached remote product images
-- Pull-to-refresh support
+- Pull-to-refresh support in product list screen
 
 ### Cart
 
@@ -209,6 +209,7 @@ This affected the implementation scope:
 
 - Products, auth, carts, and users were built against DummyJSON
 - Orders were not implemented because they are not part of the provided machine-test rubric and are not available as a dedicated DummyJSON resource
+- User /POST is not implemented since DummyJSON does not support server edits
 
 ## Current Status
 
@@ -220,16 +221,10 @@ Implemented:
 - Local persistence for products and cart
 - Optimistic cart UX
 - Theming and reusable UI system
-
-## Missing Or Partially Implemented Features
-
 - Localization with Flutter localizations and `.arb` files
-- Product search UI integration
-  Debounce logic already exists in the search notifier, but the search flow is not fully surfaced in the UI
 - Splash-first app startup flow
-  Splash logic exists, but it is not currently the initial routed entry point of the app
 - Real-time connectivity guard and offline banner handling
-- User-facing sort controls for product listing
+- Debounced search
 
 ## Submission Summary
 
