@@ -14,40 +14,20 @@ class AppShell extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue<bool>>(connectivityStatusProvider, (previous, next) {
-      final prevStatus = previous?.value;
-      final nextStatus = next.value;
-
-      if (nextStatus == null || prevStatus == nextStatus) return;
-
-      // Prevent crashes if the widget was removed from the tree
       if (!context.mounted) return;
 
-      final messenger = ScaffoldMessenger.of(context);
+      final isOnline = next.value == true;
+      final wasOffline = previous?.value == false;
 
-      if (nextStatus == true) {
-        // BACK ONLINE
-        messenger.clearMaterialBanners();
-
-        // Show a temporary success message
+      // Internet is back
+      if (isOnline && wasOffline) {
+        final messenger = ScaffoldMessenger.of(context);
+        messenger.clearSnackBars();
         messenger.showSnackBar(
-          const SnackBar(
-            content: Text('Back Online'),
-            backgroundColor: Colors.green,
+           SnackBar(
+            content: Text("Back online!"),
+            backgroundColor: context.colors.success,
             behavior: SnackBarBehavior.floating,
-          ),
-        );
-      } else {
-        messenger.showMaterialBanner(
-          const MaterialBanner(
-            content: Text('No Internet Connection. Viewing offline data.'),
-            backgroundColor: Colors.red,
-            actions: [
-              // Banners require at least one action, even if it's just a dummy 'Dismiss'
-              TextButton(
-                onPressed: null, // Disable the button, they must reconnect!
-                child: Icon(Icons.wifi_off, color: Colors.white),
-              ),
-            ],
           ),
         );
       }

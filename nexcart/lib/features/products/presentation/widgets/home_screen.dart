@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nexcart/core/extensions/context_extension.dart';
+import 'package:nexcart/core/ui/atoms/offline_banner.dart';
 import 'package:nexcart/features/products/domain/entities/category_entity.dart';
 import 'package:nexcart/features/products/presentation/widgets/molecules/home_category_section.dart';
 import 'package:nexcart/features/products/presentation/widgets/molecules/home_product_section.dart';
@@ -44,25 +45,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            spacing: 12,
-            children: [
-              HomeScreenCategorySection(
-                selectedCategory: selectedCategory,
-                onCategorySelection: (value) {
-                  setState(() {
-                    selectedCategory = value;
-                  });
-                },
+      body: Column(
+        children: [
+          const OfflineBanner(),
+          
+          Expanded(
+            child: SingleChildScrollView(
+              child: SafeArea(
+                child: Column(
+                  spacing: 12,
+                  children: [
+                    HomeScreenCategorySection(
+                      selectedCategory: selectedCategory,
+                      onCategorySelection: (value) {
+                        setState(() {
+                          selectedCategory = value;
+                        });
+                      },
+                    ),
+            
+                    if (selectedCategory != null)
+                      HomeScreenProductsSection(selectedCategory: selectedCategory!),
+                  ],
+                ),
               ),
-
-              if (selectedCategory != null)
-                HomeScreenProductsSection(selectedCategory: selectedCategory!),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

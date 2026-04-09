@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nexcart/core/extensions/context_extension.dart';
+import 'package:nexcart/core/ui/atoms/offline_banner.dart';
 import 'package:nexcart/core/ui/atoms/product_card.dart';
 import 'package:nexcart/core/ui/atoms/nex_shimmer.dart';
 import 'package:nexcart/core/ui/molecules/empty_state.dart';
@@ -34,26 +35,34 @@ class ProductsListScreen extends ConsumerWidget {
         surfaceTintColor: Colors.transparent,
         titleSpacing: 16,
       ),
-      body: RefreshIndicator(
-        onRefresh: () => ref
-            .read(productsProvider(selectedCategory.slug, 20).notifier)
-            .refresh(),
-        child: productsState.when(
-          loading: () => _buildShimmerGrid(),
-          error: (error, _) => ErrorState(
-            message: error.toString(),
-            onRetry: () =>
-                ref.invalidate(productsProvider(selectedCategory.slug, 20)),
+      body: Column(
+        children: [
+          const OfflineBanner(),
+          
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () => ref
+                  .read(productsProvider(selectedCategory.slug, 20).notifier)
+                  .refresh(),
+              child: productsState.when(
+                loading: () => _buildShimmerGrid(),
+                error: (error, _) => ErrorState(
+                  message: error.toString(),
+                  onRetry: () =>
+                      ref.invalidate(productsProvider(selectedCategory.slug, 20)),
+                ),
+                data: (paginated) => paginated.products.isEmpty
+                    ? SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: SizedBox(
+                          height: 320,
+                          child: const EmptyState(message: "No products found")),
+                      )
+                    : _buildProductGrid(context, ref, paginated),
+              ),
+            ),
           ),
-          data: (paginated) => paginated.products.isEmpty
-              ? SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: SizedBox(
-                    height: 320,
-                    child: const EmptyState(message: "No products found")),
-                )
-              : _buildProductGrid(context, ref, paginated),
-        ),
+        ],
       ),
     );
   }
