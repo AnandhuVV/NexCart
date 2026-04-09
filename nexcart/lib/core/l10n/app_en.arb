@@ -1,0 +1,68 @@
+{
+  "@@locale": "en",
+  "appName": "NexCart",
+  "username": "Username",
+  "password": "Password",
+  "signIn": "Sign In",
+  "enterYourUsername": "Enter your Username",
+  "enterYourPassword": "Enter your Password",
+  "pleaseEnterYourUsername": "Please enter your username",
+  "usernameMustBeAtLeast3Characters": "Username must be at least 3 characters",
+  "pleaseEnterYourPassword": "Please enter your password",
+  "passwordMustBeAtLeast6Characters": "Password must be at least 6 characters",
+  "backOnline": "Back online!",
+  "home": "Home",
+  "cart": "Cart",
+  "profile": "Profile",
+  "retry": "Retry",
+  "noInternetConnection": "No internet connection",
+  "offlineBannerMessage": "No internet connection, viewing offline data",
+  "networkError": "No internet connection. Please check your network.",
+  "unauthorizedError": "User not authorized for this action",
+  "rateLimitError": "Too many attempts. Please wait a moment.",
+  "serverError": "Something went wrong. Please try again later.",
+  "timeoutError": "Request timed out. Please try again.",
+  "unknownError": "An unexpected error occurred.",
+  "failedToSecurelyLogOut": "Failed to securely log out: {error}",
+  "@failedToSecurelyLogOut": {
+    "description": "Shown when secure logout fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "categories": "Categories",
+  "seeAll": "See All",
+  "seeLess": "See Less",
+  "noCategoriesFound": "No categories found",
+  "products": "Products",
+  "noProductsFound": "No products found",
+  "productDetails": "Product Details",
+  "unavailable": "Unavailable",
+  "cartUnavailable": "Cart Unavailable",
+  "removeFromCart": "Remove from Cart",
+  "addToCart": "Add to Cart",
+  "availabilityStatusWithStock": "{availabilityStatus} • {stock} left",
+  "@availabilityStatusWithStock": {
+    "description": "Shows the product availability status and remaining stock",
+    "placeholders": {
+      "availabilityStatus": {
+        "type": "String"
+      },
+      "stock": {
+        "type": "int"
+      }
+    }
+  },
+  "description": "Description",
+  "yourCartIsEmpty": "Your cart is empty!",
+  "logout": "Logout",
+  "logoutConfirmation": "Are you sure you want to logout?",
+  "cancel": "Cancel",
+  "email": "Email",
+  "phone": "Phone",
+  "gender": "Gender",
+  "birthDate": "Birth Date",
+  "address": "Address"
+}

@@ -18,16 +18,18 @@ class ProductDetailScreen extends ConsumerWidget {
   Widget _getShimmer() {
     return const Padding(
       padding: EdgeInsets.all(16),
-      child: Column(
-        spacing: 12,
-        children: [
-          NexShimmer(height: 300),
-          NexShimmer(height: 50),
-          NexShimmer(height: 50),
-          NexShimmer(height: 20),
-          NexShimmer(height: 20),
-          NexShimmer(height: 20),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          spacing: 12,
+          children: [
+            NexShimmer(height: 300),
+            NexShimmer(height: 50),
+            NexShimmer(height: 50),
+            NexShimmer(height: 20),
+            NexShimmer(height: 20),
+            NexShimmer(height: 20),
+          ],
+        ),
       ),
     );
   }
@@ -41,7 +43,7 @@ class ProductDetailScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Product Details",
+          context.loc.productDetails,
           style: context.textStyle.headingMedium.copyWith(
             color: context.colors.onPrimary,
           ),
@@ -73,7 +75,7 @@ class ProductDetailScreen extends ConsumerWidget {
         error: (_, _) => _bottomBarWrapper(
           context,
           PrimaryButton(
-            title: "Unavailable",
+            title: context.loc.unavailable,
             onPressed: null,
             isLoading: false,
           ),
@@ -87,7 +89,7 @@ class ProductDetailScreen extends ConsumerWidget {
                   PrimaryButton(title: "", onPressed: null, isLoading: true),
 
               error: (_, _) => PrimaryButton(
-                title: "Cart Unavailable",
+                title: context.loc.cartUnavailable,
                 onPressed: null,
                 isLoading: false,
               ),
@@ -98,7 +100,9 @@ class ProductDetailScreen extends ConsumerWidget {
                 );
 
                 return PrimaryButton(
-                  title: isInCart ? "Remove from Cart" : "Add to Cart",
+                  title: isInCart
+                      ? context.loc.removeFromCart
+                      : context.loc.addToCart,
                   onPressed: () {
                     if (isInCart) {
                       ref
@@ -119,20 +123,20 @@ class ProductDetailScreen extends ConsumerWidget {
       body: Column(
         children: [
           const OfflineBanner(),
-          
+
           Expanded(
             child: productState.when(
               loading: () => _getShimmer(),
-            
+
               error: (error, _) => ErrorState(
-                message: error.toString(),
+                message: context.localizeError(error),
                 onRetry: () => ref.invalidate(productDetailProvider(productId)),
               ),
-            
+
               data: (product) {
                 final originalPrice =
                     product.price / (1 - product.discountPercentage / 100);
-            
+
                 return SingleChildScrollView(
                   padding: const EdgeInsets.all(16),
                   child: Column(
@@ -150,13 +154,16 @@ class ProductDetailScreen extends ConsumerWidget {
                           ),
                         ),
                       ),
-            
+
                       const SizedBox(height: 24),
-            
-                      Text(product.title, style: context.textStyle.headingMedium),
-            
+
+                      Text(
+                        product.title,
+                        style: context.textStyle.headingMedium,
+                      ),
+
                       const SizedBox(height: 8),
-            
+
                       Row(
                         children: [
                           if (product.brand != null)
@@ -166,22 +173,22 @@ class ProductDetailScreen extends ConsumerWidget {
                                 color: context.colors.primaryAction,
                               ),
                             ),
-            
+
                           if (product.brand != null) const SizedBox(width: 12),
-            
+
                           const Icon(Icons.star, color: Colors.amber, size: 18),
-            
+
                           const SizedBox(width: 4),
-            
+
                           Text(
                             product.rating.toStringAsFixed(1),
                             style: context.textStyle.bodyMedium,
                           ),
                         ],
                       ),
-            
+
                       const SizedBox(height: 16),
-            
+
                       Row(
                         children: [
                           Text(
@@ -190,9 +197,9 @@ class ProductDetailScreen extends ConsumerWidget {
                               color: context.colors.primaryAction,
                             ),
                           ),
-            
+
                           const SizedBox(width: 12),
-            
+
                           Text(
                             '\$${originalPrice.toStringAsFixed(2)}',
                             style: context.textStyle.bodyMedium.copyWith(
@@ -202,9 +209,9 @@ class ProductDetailScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
-            
+
                       const SizedBox(height: 20),
-            
+
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
@@ -215,18 +222,27 @@ class ProductDetailScreen extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(999),
                         ),
                         child: Text(
-                          '${product.availabilityStatus} • ${product.stock} left',
+                          context.loc.availabilityStatusWithStock(
+                            product.availabilityStatus,
+                            product.stock,
+                          ),
                           style: context.textStyle.bodyNormal,
                         ),
                       ),
-            
+
                       const SizedBox(height: 24),
-            
-                      Text('Description', style: context.textStyle.bodySemibold),
-            
+
+                      Text(
+                        context.loc.description,
+                        style: context.textStyle.bodySemibold,
+                      ),
+
                       const SizedBox(height: 8),
-            
-                      Text(product.description, style: context.textStyle.bodyNormal),
+
+                      Text(
+                        product.description,
+                        style: context.textStyle.bodyNormal,
+                      ),
                     ],
                   ),
                 );

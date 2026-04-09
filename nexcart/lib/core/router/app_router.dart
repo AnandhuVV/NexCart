@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nexcart/core/extensions/context_extension.dart';
 import 'package:nexcart/core/router/app_shell.dart';
 import 'package:nexcart/features/authentication/presentation/widgets/login_screen.dart';
-import 'package:nexcart/features/cart/presentation/notifiers/cart_notifier.dart';
 import 'package:nexcart/features/cart/presentation/widgets/cart_screen.dart';
 import 'package:nexcart/features/products/domain/entities/category_entity.dart';
 import 'package:nexcart/features/products/presentation/widgets/home_screen.dart';

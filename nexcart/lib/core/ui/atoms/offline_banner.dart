@@ -27,7 +27,7 @@ class OfflineBanner extends ConsumerWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  "No internet connection, viewing offline data", // Using our localization!
+                  context.loc.offlineBannerMessage,
                   style: const TextStyle(color: Colors.white, fontSize: 14),
                 ),
               ),

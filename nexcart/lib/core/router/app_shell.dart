@@ -24,8 +24,8 @@ class AppShell extends ConsumerWidget {
         final messenger = ScaffoldMessenger.of(context);
         messenger.clearSnackBars();
         messenger.showSnackBar(
-           SnackBar(
-            content: Text("Back online!"),
+          SnackBar(
+            content: Text(context.loc.backOnline),
             backgroundColor: context.colors.success,
             behavior: SnackBarBehavior.floating,
           ),
@@ -61,7 +61,7 @@ class AppShell extends ConsumerWidget {
               NavigationDestination(
                 icon: const Icon(Icons.home_outlined),
                 selectedIcon: Icon(Icons.home, color: context.colors.onPrimary),
-                label: 'Home',
+                label: context.loc.home,
               ),
 
               NavigationDestination(
@@ -78,7 +78,7 @@ class AppShell extends ConsumerWidget {
                     color: context.colors.onPrimary,
                   ),
                 ),
-                label: 'Cart',
+                label: context.loc.cart,
               ),
 
               NavigationDestination(
@@ -87,7 +87,7 @@ class AppShell extends ConsumerWidget {
                   Icons.person,
                   color: context.colors.onPrimary,
                 ),
-                label: 'Profile',
+                label: context.loc.profile,
               ),
             ],
           );

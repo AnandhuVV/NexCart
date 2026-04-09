@@ -15,10 +15,13 @@ class NoInternetState extends StatelessWidget {
         spacing: 16,
         children: [
           Icon(Icons.wifi_off_outlined, size: 48, color: context.colors.error),
-          Text("No internet connection", style: context.textStyle.bodyMedium),
+          Text(
+            context.loc.noInternetConnection,
+            style: context.textStyle.bodyMedium,
+          ),
           if (onRetry != null)
             PrimaryButton(
-              title: 'Retry',
+              title: context.loc.retry,
               onPressed: onRetry,
               isLoading: false,
             ),

@@ -38,7 +38,7 @@ class SplashScreen extends ConsumerWidget {
               height: 120,
             ),
             Text(
-              'NexCart',
+              context.loc.appName,
               style: context.textStyle.headingLarge.copyWith(
                 color: context.colors.textPrimary,
               ),

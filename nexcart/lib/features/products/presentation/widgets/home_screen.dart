@@ -36,7 +36,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(width: 8),
             Text(
-              'NexCart',
+              context.loc.appName,
               style: context.textStyle.bodyLarge.copyWith(
                 fontWeight: FontWeight.bold,
                 color: context.colors.onPrimary,

@@ -47,7 +47,7 @@ class ProductsListScreen extends ConsumerWidget {
               child: productsState.when(
                 loading: () => _buildShimmerGrid(),
                 error: (error, _) => ErrorState(
-                  message: error.toString(),
+                  message: context.localizeError(error),
                   onRetry: () =>
                       ref.invalidate(productsProvider(selectedCategory.slug, 20)),
                 ),
@@ -56,7 +56,8 @@ class ProductsListScreen extends ConsumerWidget {
                         physics: const AlwaysScrollableScrollPhysics(),
                         child: SizedBox(
                           height: 320,
-                          child: const EmptyState(message: "No products found")),
+                          child: EmptyState(message: context.loc.noProductsFound),
+                        ),
                       )
                     : _buildProductGrid(context, ref, paginated),
               ),

@@ -43,10 +43,10 @@ class _HomeScreenCategorySectionState
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Categories", style: context.textStyle.bodySemibold),
+              Text(context.loc.categories, style: context.textStyle.bodySemibold),
               if (!categoryState.isLoading || !categoryState.hasError)
                 SeeAllButton(
-                  label: _showAll ? "See Less" : "See All",
+                  label: _showAll ? context.loc.seeLess : context.loc.seeAll,
                   onPressed: () {
                     setState(() {
                       if (_showAll) { // If currently showing all, rearrange to move selected category to front
@@ -67,13 +67,13 @@ class _HomeScreenCategorySectionState
           loading: () => const HomeScreenCategoryShimmer(),
 
           error: (error, _) => ErrorState(
-            message: error.toString(),
+            message: context.localizeError(error),
             onRetry: () => ref.invalidate(categoriesProvider),
           ),
 
           data: (categories) {
             if (categories.isEmpty) {
-              return const EmptyState(message: 'No categories found');
+              return EmptyState(message: context.loc.noCategoriesFound);
             }
 
             // Checks if on first load and categories are available

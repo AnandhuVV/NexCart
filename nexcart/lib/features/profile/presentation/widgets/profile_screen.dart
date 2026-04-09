@@ -33,7 +33,7 @@ class ProfileScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Profile",
+          context.loc.profile,
           style: context.textStyle.headingMedium.copyWith(
             color: context.colors.onPrimary,
           ),
@@ -53,13 +53,13 @@ class ProfileScreen extends ConsumerWidget {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: const Text('Logout'),
-                  content: const Text('Are you sure you want to logout?'),
+                  title: Text(context.loc.logout),
+                  content: Text(context.loc.logoutConfirmation),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
                       child: Text(
-                        'Cancel',
+                        context.loc.cancel,
                         style: TextStyle(color: context.colors.textPrimary),
                       ),
                     ),
@@ -76,7 +76,7 @@ class ProfileScreen extends ConsumerWidget {
                         context.go('/login');
                       },
                       child: Text(
-                        'Logout',
+                        context.loc.logout,
                         style: TextStyle(color: context.colors.error),
                       ),
                     ),
@@ -89,7 +89,7 @@ class ProfileScreen extends ConsumerWidget {
             backgroundColor: WidgetStatePropertyAll(context.colors.error),
           ),
           child: Text(
-            "Log Out",
+            context.loc.logout,
             style: context.textStyle.bodyThin.copyWith(
               color: context.colors.onPrimary,
               fontWeight: FontWeight.w500,
@@ -101,7 +101,7 @@ class ProfileScreen extends ConsumerWidget {
         loading: () => _getShimmer(),
 
         error: (error, _) => ErrorState(
-          message: error.toString(),
+          message: context.localizeError(error),
           onRetry: () => ref.invalidate(profileScreenProvider),
         ),
 
@@ -132,16 +132,19 @@ class ProfileScreen extends ConsumerWidget {
 
                 const SizedBox(height: 24),
 
-                _ProfileInfoTile(label: 'Email', value: user.email),
+                _ProfileInfoTile(label: context.loc.email, value: user.email),
 
-                _ProfileInfoTile(label: 'Phone', value: user.phone),
+                _ProfileInfoTile(label: context.loc.phone, value: user.phone),
 
-                _ProfileInfoTile(label: 'Gender', value: user.gender),
-
-                _ProfileInfoTile(label: 'Birth Date', value: user.birthDate),
+                _ProfileInfoTile(label: context.loc.gender, value: user.gender),
 
                 _ProfileInfoTile(
-                  label: 'Address',
+                  label: context.loc.birthDate,
+                  value: user.birthDate,
+                ),
+
+                _ProfileInfoTile(
+                  label: context.loc.address,
                   value: user.address.formatted,
                 ),
 

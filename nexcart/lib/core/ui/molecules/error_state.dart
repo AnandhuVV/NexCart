@@ -25,7 +25,7 @@ class ErrorState extends StatelessWidget {
             PrimaryButton(
               width: 100,
               height: 40,
-              title: 'Retry',
+              title: context.loc.retry,
               onPressed: onRetry,
               isLoading: false,
             ),

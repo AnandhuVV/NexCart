@@ -25,7 +25,7 @@ class AuthNotifier extends _$AuthNotifier {
     // Update the state based on the functional Either response
     result.fold(
       ifLeft: (error) {
-        state = AsyncValue.error(error.toString(), StackTrace.current);
+        state = AsyncValue.error(error, StackTrace.current);
       },
       ifRight: (user) {
         state = AsyncValue.data(user);

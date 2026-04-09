@@ -1,0 +1,68 @@
+{
+  "@@locale": "ar",
+  "appName": "NexCart",
+  "username": "اسم المستخدم",
+  "password": "كلمة المرور",
+  "signIn": "تسجيل الدخول",
+  "enterYourUsername": "أدخل اسم المستخدم",
+  "enterYourPassword": "أدخل كلمة المرور",
+  "pleaseEnterYourUsername": "يرجى إدخال اسم المستخدم",
+  "usernameMustBeAtLeast3Characters": "يجب أن يتكون اسم المستخدم من 3 أحرف على الأقل",
+  "pleaseEnterYourPassword": "يرجى إدخال كلمة المرور",
+  "passwordMustBeAtLeast6Characters": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+  "backOnline": "تم استعادة الاتصال!",
+  "home": "الرئيسية",
+  "cart": "السلة",
+  "profile": "الملف الشخصي",
+  "retry": "إعادة المحاولة",
+  "noInternetConnection": "لا يوجد اتصال بالإنترنت",
+  "offlineBannerMessage": "لا يوجد اتصال بالإنترنت، يتم عرض البيانات غير المتصلة",
+  "networkError": "لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.",
+  "unauthorizedError": "غير مصرح للمستخدم بهذا الإجراء",
+  "rateLimitError": "عدد المحاولات كبير جدًا. يرجى الانتظار قليلًا.",
+  "serverError": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+  "timeoutError": "انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.",
+  "unknownError": "حدث خطأ غير متوقع.",
+  "failedToSecurelyLogOut": "فشل تسجيل الخروج بشكل آمن: {error}",
+  "@failedToSecurelyLogOut": {
+    "description": "Shown when secure logout fails",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "categories": "الفئات",
+  "seeAll": "عرض الكل",
+  "seeLess": "عرض أقل",
+  "noCategoriesFound": "لم يتم العثور على فئات",
+  "products": "المنتجات",
+  "noProductsFound": "لم يتم العثور على منتجات",
+  "productDetails": "تفاصيل المنتج",
+  "unavailable": "غير متاح",
+  "cartUnavailable": "السلة غير متاحة",
+  "removeFromCart": "إزالة من السلة",
+  "addToCart": "أضف إلى السلة",
+  "availabilityStatusWithStock": "{availabilityStatus} • {stock} متبقٍ",
+  "@availabilityStatusWithStock": {
+    "description": "Shows the product availability status and remaining stock",
+    "placeholders": {
+      "availabilityStatus": {
+        "type": "String"
+      },
+      "stock": {
+        "type": "int"
+      }
+    }
+  },
+  "description": "الوصف",
+  "yourCartIsEmpty": "سلتك فارغة!",
+  "logout": "تسجيل الخروج",
+  "logoutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "cancel": "إلغاء",
+  "email": "البريد الإلكتروني",
+  "phone": "الهاتف",
+  "gender": "الجنس",
+  "birthDate": "تاريخ الميلاد",
+  "address": "العنوان"
+}

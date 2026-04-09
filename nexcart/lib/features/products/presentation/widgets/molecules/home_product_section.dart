@@ -44,7 +44,7 @@ class HomeScreenProductsSection extends ConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Products', style: context.textStyle.bodySemibold),
+                Text(context.loc.products, style: context.textStyle.bodySemibold),
                 SeeAllButton(
                   onPressed: () => context.push(
                     '/products_list',
@@ -62,7 +62,7 @@ class HomeScreenProductsSection extends ConsumerWidget {
             loading: () => _buildShimmerGrid(),
 
             error: (error, _) => ErrorState(
-              message: error.toString(),
+              message: context.localizeError(error),
               onRetry: () {
                 ref.invalidate(productsProvider(selectedCategory.slug, 6));
               },
@@ -72,7 +72,7 @@ class HomeScreenProductsSection extends ConsumerWidget {
               final products = paginated.products.take(6).toList();
 
               if (products.isEmpty) {
-                return const EmptyState(message: 'No products found');
+                return EmptyState(message: context.loc.noProductsFound);
               }
 
               return GridView.builder(

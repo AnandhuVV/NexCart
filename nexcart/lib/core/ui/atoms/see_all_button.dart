@@ -5,10 +5,10 @@ class SeeAllButton extends StatelessWidget {
   const SeeAllButton({
     super.key,
     required this.onPressed,
-    this.label = "See All",
+    this.label,
   });
 
-  final String label;
+  final String? label;
   final VoidCallback onPressed;
 
   @override
@@ -30,7 +30,7 @@ class SeeAllButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(999),
           ),
           child: Text(
-            label,
+            label ?? context.loc.seeAll,
             style: context.textStyle.bodyThin.copyWith(
               color: context.colors.primaryAction,
               fontWeight: FontWeight.w600,

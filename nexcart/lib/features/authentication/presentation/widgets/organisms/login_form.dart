@@ -49,7 +49,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         error: (error, _) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(error.toString()),
+              content: Text(context.localizeError(error)),
               backgroundColor: context.colors.error,
             ),
           );
@@ -63,45 +63,46 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         padding: const EdgeInsets.all(20),
         child: Column(
           spacing: 12,
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _appLogo(context),
             _loginFormField(
               context,
-              "Username",
+              context.loc.username,
               _usernameController,
+              hintText: context.loc.enterYourUsername,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Please enter your username';
+                  return context.loc.pleaseEnterYourUsername;
                 }
                 if (value.trim().length < 3) {
-                  return 'Username must be at least 3 characters';
+                  return context.loc.usernameMustBeAtLeast3Characters;
                 }
                 return null;
               },
             ),
             _loginFormField(
               context,
-              "Password",
+              context.loc.password,
               _passwordController,
+              hintText: context.loc.enterYourPassword,
               obscureText: true,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Please enter your password';
+                  return context.loc.pleaseEnterYourPassword;
                 }
                 if (value.trim().length < 6) {
-                  return 'Password must be at least 6 characters';
+                  return context.loc.passwordMustBeAtLeast6Characters;
                 }
                 return null;
               },
             ),
             const SizedBox(height: 24),
             PrimaryButton(
-              title: "Sign In",
+              title: context.loc.signIn,
               isLoading: authState.isLoading,
               onPressed: authState.isLoading ? null : _onSignIn,
             ),
-            const SizedBox(height: 140),
           ],
         ),
       ),
@@ -112,6 +113,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
     BuildContext context,
     String title,
     TextEditingController controller, {
+    required String hintText,
     bool obscureText = false,
     String? Function(String?)? validator,
   }) {
@@ -126,7 +128,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         NexTextField(
           obscureText ? AutofillHints.password : AutofillHints.username,
           controller: controller,
-          hintText: "Enter your $title",
+          hintText: hintText,
           obscureText: obscureText,
           validator: validator,
         ),
@@ -144,7 +146,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
           child: Image.asset('assets/images/app_logo_inside.png'),
         ),
         Text(
-          "NexCart",
+          context.loc.appName,
           style: context.textStyle.headingLarge.copyWith(
             color: context.colors.primaryAction,
           ),

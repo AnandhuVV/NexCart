@@ -31,7 +31,7 @@ class CartScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Cart",
+          context.loc.cart,
           style: context.textStyle.headingMedium.copyWith(
             color: context.colors.onPrimary,
           ),
@@ -47,13 +47,13 @@ class CartScreen extends ConsumerWidget {
         loading: () => _getShimmer(),
 
         error: (error, _) => ErrorState(
-          message: error.toString(),
+          message: context.localizeError(error),
           onRetry: () => ref.invalidate(cartProvider),
         ),
 
         data: (items) {
           if (items.isEmpty) {
-            return const EmptyState(message: 'Your cart is empty!');
+            return EmptyState(message: context.loc.yourCartIsEmpty);
           }
 
           return ListView.separated(
